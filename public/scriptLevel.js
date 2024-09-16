@@ -64,6 +64,8 @@ const plants_counter = document.getElementById("plants_counter");
 let totalPlants = 0;
 let remainingPlants = 22;
 let shootingPeasInterval;
+let nutCooldown = false;
+let cherryBombCooldown = false;
 
 const activePlant = {
   peashooter: false,
@@ -74,6 +76,14 @@ const activePlant = {
 
 function createPlant(name) {
   checkDifficulty();
+  if (name === "nut" && nutCooldown) {
+    alert("Nut is reloading...");
+    return;
+  }
+  if (name === "cherryBomb" && cherryBombCooldown) {
+    alert("Cherry Bomb is reloading...");
+    return;
+  }
   if (totalPlants < 22) {
     let ok = selectorPositionPlant(name);
     if (!ok) {
@@ -81,6 +91,22 @@ function createPlant(name) {
     }
   } else {
     alert("There is not enough space in the garden");
+  }
+  if (name === "nut") {
+    nutCooldown = true;
+    addNut.style.filter = "grayscale(100%)";
+    setTimeout(() => {
+      nutCooldown = false;
+      addNut.style.filter = "none";
+    }, 3200);
+  }
+  if (name === "cherryBomb") {
+    cherryBombCooldown = true;
+    addCherryBomb.style.filter = "grayscale(100%)";
+    setTimeout(() => {
+      cherryBombCooldown = false;
+      addCherryBomb.style.filter = "none";
+    }, 8200);
   }
 }
 
@@ -195,10 +221,10 @@ garden.addEventListener("click", function (event) {
 });
 
 function shootingPeas(x, y, type) {
-  let time = 6500;
+  let time = 6300;
   let damage = 25;
   if (type === "pea-ultimate") {
-    time = 3250;
+    time = 3150;
     damage = 50;
   }
   shootingPeasInterval = setInterval(() => {
@@ -241,7 +267,7 @@ function createSuns(x, y, type) {
   let time = 14000;
   if (type === "sun-ultimate") {
     sun = 125;
-    time = 10000;
+    time = 9500;
   }
   setInterval(() => {
     const newSun = document.createElement("img");
@@ -260,7 +286,7 @@ function createSuns(x, y, type) {
 
 function pushZombieBack(zombie, nut) {
   let currentLeft = parseInt(zombie.style.left, 10);
-  currentLeft += 750;
+  currentLeft += 700;
   zombie.style.left = `${currentLeft}px`;
   return currentLeft;
 }
@@ -290,8 +316,8 @@ function explode(plant, type) {
         const distance = Math.sqrt(
           Math.pow(explosionX - zombieX, 2) + Math.pow(explosionY - zombieY, 2)
         );
-        if (distance < 400) {
-          zombie.health -= 180;
+        if (distance < 250) {
+          zombie.health -= 170;
           if (zombie.health <= 0) {
             zombie.remove();
             totalDeathZombies++;
@@ -379,10 +405,10 @@ function createRandomZombiesExtreme() {
   musicPlayer.src = "../assets/sounds/pvz-phonk.mp3";
   musicPlayer.load();
   musicPlayer.play();
-  createZombiesInterval = setInterval(createZombieNormal, 2000);
-  createBucketZombiesInterval = setInterval(createZombieBucket, 5000);
+  createZombiesInterval = setInterval(createZombieNormal, 1800);
+  createBucketZombiesInterval = setInterval(createZombieBucket, 4500);
   createdGlobeZombiesInterval = setInterval(createZombieGlobe, 5500);
-  createdFootballZombiesInterval = setInterval(createFootballZombie, 6000);
+  createdFootballZombiesInterval = setInterval(createFootballZombie, 5800);
   createBigZombiesInterval = setInterval(createBigZombie, 14500);
 }
 
@@ -415,7 +441,7 @@ function createZombie(zombie, speed, health) {
 }
 
 function createZombieNormal() {
-  createZombie("zombie", 1.9, 100);
+  createZombie("zombie", 1.8, 100);
 }
 function createZombieBucket() {
   createZombie("buckethead-zombie", 1.65, 150);
@@ -427,7 +453,7 @@ function createFootballZombie() {
   createZombie("football-zombie", 4.5, 125);
 }
 function createBigZombie() {
-  createZombie("big-zombie", 1.15, 500);
+  createZombie("big-zombie", 1.15, 600);
 }
 
 function zombieWalk(zombie, speed) {
@@ -457,7 +483,7 @@ function zombieWalk(zombie, speed) {
           ) {
             currentLeft = pushZombieBack(zombie, plant);
           } else if (plant.src.includes("nut")) {
-            currentLeft += 650;
+            currentLeft += 600;
             plant.remove();
             totalPlants--;
             remainingPlants++;
