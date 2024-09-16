@@ -383,14 +383,14 @@ function checkDifficulty() {
   } else if (totalPlants === 14) {
     clearAllIntervalZombies();
     createRandomZombiesDifficult();
-  } else if (totalPlants === 20) {
+  } else if (totalPlants === 19) {
     clearAllIntervalZombies();
     createRandomZombiesExtreme();
   }
 }
 
 function createRandomZombiesEasy() {
-  createZombiesInterval = setInterval(createZombieNormal, 25000);
+  createZombiesInterval = setInterval(createZombieNormal, 30000);
 }
 function createRandomZombiesNormal() {
   createZombiesInterval = setInterval(createZombieNormal, 14000);
@@ -441,7 +441,7 @@ function createZombie(zombie, speed, health) {
 }
 
 function createZombieNormal() {
-  createZombie("zombie", 1.8, 100);
+  createZombie("zombie", 1.78, 100);
 }
 function createZombieBucket() {
   createZombie("buckethead-zombie", 1.65, 150);
