@@ -76,6 +76,11 @@ const activePlant = {
 
 function createPlant(name) {
   checkDifficulty();
+  const sunCosts = { peashooter: 100, sunflower: 50, nut: 75, cherryBomb: 150 };
+  if (totalSuns < sunCosts[name]) {
+    alert("There are not enough suns");
+    return;
+  }
   if (name === "nut" && nutCooldown) {
     alert("Nut is reloading...");
     return;
@@ -84,44 +89,43 @@ function createPlant(name) {
     alert("Cherry Bomb is reloading...");
     return;
   }
-  if (totalPlants < 22) {
-    let ok = selectorPositionPlant(name);
-    if (!ok) {
-      alert("There are not enough suns");
+  let ok = selectorPositionPlant(name);
+  if (ok) {
+    if (name === "nut") {
+      nutCooldown = true;
+      addNut.style.filter = "grayscale(100%)";
+      setTimeout(() => {
+        nutCooldown = false;
+        addNut.style.filter = "none";
+      }, 3200);
+    }
+    if (name === "cherryBomb") {
+      cherryBombCooldown = true;
+      addCherryBomb.style.filter = "grayscale(100%)";
+      setTimeout(() => {
+        cherryBombCooldown = false;
+        addCherryBomb.style.filter = "none";
+      }, 8200);
     }
   } else {
     alert("There is not enough space in the garden");
-  }
-  if (name === "nut") {
-    nutCooldown = true;
-    addNut.style.filter = "grayscale(100%)";
-    setTimeout(() => {
-      nutCooldown = false;
-      addNut.style.filter = "none";
-    }, 3200);
-  }
-  if (name === "cherryBomb") {
-    cherryBombCooldown = true;
-    addCherryBomb.style.filter = "grayscale(100%)";
-    setTimeout(() => {
-      cherryBombCooldown = false;
-      addCherryBomb.style.filter = "none";
-    }, 8200);
   }
 }
 
 function selectorPositionPlant(name) {
   const sunCosts = { peashooter: 100, sunflower: 50, nut: 75, cherryBomb: 150 };
-  const nutrientSelector = {
-    peashooter: 1,
-    sunflower: 2,
-    nut: 3,
-    cherryBomb: 4,
-  };
   if (totalSuns >= sunCosts[name]) {
+    const nutrientSelector = {
+      peashooter: 1,
+      sunflower: 2,
+      nut: 3,
+      cherryBomb: 4,
+    };
     if (nutrientOn) {
       document.body.classList.add("fertilize-" + nutrientSelector[name]);
-    } else document.body.classList.add("fertilize-cursor");
+    } else {
+      document.body.classList.add("fertilize-cursor");
+    }
     activePlant[name] = true;
     return true;
   }
@@ -441,7 +445,7 @@ function createZombie(zombie, speed, health) {
 }
 
 function createZombieNormal() {
-  createZombie("zombie", 1.78, 100);
+  createZombie("zombie", 1.75, 100);
 }
 function createZombieBucket() {
   createZombie("buckethead-zombie", 1.65, 150);
