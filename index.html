@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PvZ</title>
+    <link rel="icon" type="image/x-icon" href="./assets/images/favicon.jpg" />
+    <style>
+      html,
+      body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        background-image: url("assets/images/main-menu.jpg");
+        background-size: contain;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .menu {
+        background-image: url("assets/images/levels.png");
+        background-size: cover;
+        background-repeat: no-repeat;
+        margin-top: 10rem;
+        width: 25rem;
+        height: 30rem;
+      }
+      .menu:hover {
+        height: 30.5rem;
+      }
+      .music {
+        align-self: flex-start;
+        display: flex;
+        align-items: center;
+        margin-top: 2.25rem;
+        margin-left: 1.9rem;
+      }
+      .phatBeet {
+        width: 6.35rem;
+      }
+      .phatBeet:hover {
+        width: 6.5rem;
+      }
+      .music button {
+        background: none;
+        border: none;
+        font-size: 1rem;
+      }
+      .music button:hover {
+        font-size: 1.225rem;
+      }
+    </style>
+  </head>
+  <body>
+    <audio
+      autoplay
+      loop
+      src="./assets/sounds/pvz-phonk.mp3"
+      id="musicPlayer"
+    ></audio>
+    <div class="music">
+      <button id="previous-track">⏮️</button>
+      <img
+        src="./assets/images/phatBeet.png"
+        alt="phatBeet"
+        id="phatBeet"
+        class="phatBeet"
+      />
+      <button id="next-track">⏭️</button>
+    </div>
+    <a href="./public/level.html"><div class="menu"></div></a>
+  </body>
+  <script>
+    const musicPlayer = document.getElementById("musicPlayer");
+    const buttonPreviousTrack = document.getElementById("previous-track");
+    const buttonNextTrack = document.getElementById("next-track");
+    const tracks = ["phonk", "original", "epic", "ending", "2", "jazz"];
+    let currentTrack = 0;
+
+    function playTrack() {
+      musicPlayer.src = "./assets/sounds/pvz-" + tracks[currentTrack] + ".mp3";
+      musicPlayer.load();
+      musicPlayer.play();
+    }
+    function NextTrack() {
+      currentTrack = (currentTrack + 1) % tracks.length;
+      playTrack();
+    }
+    function PreviousTrack() {
+      currentTrack = (currentTrack - 1 + tracks.length) % tracks.length;
+      playTrack();
+    }
+
+    buttonPreviousTrack.addEventListener("click", PreviousTrack);
+    buttonNextTrack.addEventListener("click", NextTrack);
+    startMusic.addEventListener("click", playTrack);
+  </script>
+</html>

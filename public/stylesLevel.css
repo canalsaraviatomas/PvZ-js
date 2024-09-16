@@ -1,0 +1,200 @@
+body,
+html {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+}
+
+.score {
+  display: none;
+  position: absolute;
+  left: 20%;
+  top: 26%;
+  font-size: 5.3rem;
+  text-shadow: 1px 1px 30px black;
+  font-family: "Permanent Marker", cursive;
+  color: red;
+}
+
+body {
+  background-image: url("../assets/images/background-garden.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.main-bar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  width: 100vw;
+}
+
+.sun,
+.plant-bar,
+.music,
+.nutrient,
+.shovel {
+  background-color: saddlebrown;
+  border: 1mm ridge rgb(88, 42, 8);
+}
+
+.shovel {
+  position: absolute;
+  bottom: 1rem;
+  left: 2rem;
+}
+
+.sun,
+.music,
+.nutrient,
+.shovel {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.sun img,
+.shovel img,
+.nutrient img,
+.music img {
+  width: 80px;
+}
+
+.sun p,
+.plants_counter,
+.nutrient p,
+.music button {
+  margin: 0;
+  padding: 0.5rem;
+  font-weight: bold;
+  color: white;
+  text-shadow: 1px 1px 2px black;
+  font-size: 1.33rem;
+}
+
+.music button {
+  border: none;
+  background: none;
+}
+
+.random-sun {
+  width: 73px;
+  height: 73px;
+  position: absolute;
+}
+
+.plant-bar {
+  width: 50vw;
+  height: 4.8rem;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.plant-price {
+  width: 5rem;
+  height: 5rem;
+  object-fit: cover;
+}
+
+.end {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 5px;
+  height: 100%;
+  background-color: red;
+  z-index: 1000;
+}
+
+.garden {
+  margin-left: 19rem;
+  margin-top: 1.95rem;
+  width: 63vw;
+  height: 76.5vh;
+}
+
+.garden-plant {
+  position: absolute;
+  width: 4.9rem;
+  height: 4.9rem;
+}
+
+.garden-plant-ultimate {
+  position: absolute;
+  object-fit: contain;
+  width: 7.5rem;
+  height: 7rem;
+}
+
+.sun-ultimate {
+  width: 105px;
+  height: 95px;
+  position: absolute;
+}
+
+.fertilize-cursor {
+  cursor: url("../assets/images/fertilize.png") 16 16, auto;
+}
+
+.shovel-cursor {
+  cursor: url("../assets/images/shovel.png") 16 16, auto;
+}
+
+.fertilize-1 {
+  cursor: url("../assets/images/fertilize-1.png") 16 16, auto;
+}
+
+.fertilize-2 {
+  cursor: url("../assets/images/fertilize-2.png") 16 16, auto;
+}
+
+.fertilize-3 {
+  cursor: url("../assets/images/fertilize-3.png") 16 16, auto;
+}
+
+.fertilize-4 {
+  cursor: url("../assets/images/fertilize-4.png") 16 16, auto;
+}
+
+.shoot {
+  width: 2.75rem;
+  height: 2.75rem;
+  position: absolute;
+}
+
+.explosion-ultimate {
+  position: absolute;
+  top: -2.5rem;
+  width: 40rem;
+  height: 40rem;
+}
+
+.explosion {
+  width: 17.5rem;
+  height: 15rem;
+}
+
+.zombie,
+.buckethead-zombie,
+.football-zombie {
+  position: absolute;
+  width: 12.5rem;
+  height: 10rem;
+}
+
+.globe-zombie {
+  position: absolute;
+  width: 10rem;
+  height: 10rem;
+}
+
+.big-zombie {
+  position: absolute;
+  width: 25rem;
+  height: 20rem;
+}

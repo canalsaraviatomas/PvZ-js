@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./stylesLevel.css" />
+    <title>PvZ</title>
+    <link rel="icon" type="image/x-icon" href="../assets/images/favicon.jpg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap"
+      rel="stylesheet"
+    />
+    <script type="module" src="./scriptLevel.js"></script>
+  </head>
+  <body>
+    <audio
+      autoplay
+      loop
+      src="../assets/sounds/pvz-original.mp3"
+      id="musicPlayer"
+    ></audio>
+    <h1 class="score" id="score">Prueba</h1>
+    <div class="main-bar">
+      <div class="music">
+        <button id="previous-track">⏮️</button>
+        <img src="../assets/images/phatBeet.png" alt="phatBeet" id="phatBeet" />
+        <button id="next-track">⏭️</button>
+      </div>
+      <div class="sun">
+        <p id="sun-counter">0:</p>
+        <img src="../assets/images/sun.png" alt="sun" />
+      </div>
+      <div class="plant-bar">
+        <p id="plants_counter" class="plants_counter">Remaining Plants: 22</p>
+        <img
+          class="plant-price"
+          id="peashooter"
+          src="../assets/images/price-peashooter.png"
+          alt="peashooter"
+        />
+        <img
+          class="plant-price"
+          id="sunflower"
+          src="../assets/images/price-sunflower.png"
+          alt="sunflower"
+        />
+        <img
+          class="plant-price"
+          id="nut"
+          src="../assets/images/price-nut.png"
+          alt="nut"
+        />
+        <img
+          class="plant-price"
+          id="cherryBomb"
+          src="../assets/images/price-cherryBomb.png"
+          alt="cherryBomb"
+        />
+      </div>
+      <div class="nutrient">
+        <p id="nutrient-counter">1:</p>
+        <img src="../assets/images/nutrient.png" alt="nutrient" id="nutrient" />
+      </div>
+    </div>
+    <div class="garden" id="garden"></div>
+    <div class="end" id="end"></div>
+    <div class="shovel">
+      <img src="../assets/images/shovel.png" id="shovel" alt="shovel" />
+    </div>
+  </body>
+</html>
