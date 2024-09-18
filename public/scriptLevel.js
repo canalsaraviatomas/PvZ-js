@@ -226,10 +226,10 @@ garden.addEventListener("click", function (event) {
 
 function shootingPeas(x, y, type) {
   let time = 6300;
-  let damage = 25;
+  let damage = 35;
   if (type === "pea-ultimate") {
     time = 3150;
-    damage = 50;
+    damage = 60;
   }
   shootingPeasInterval = setInterval(() => {
     let currentX = parseInt(x);
